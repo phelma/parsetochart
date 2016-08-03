@@ -18,7 +18,7 @@ app.get('/api', (req, res, next) => {
   let stream = fs.createReadStream(path.join(__dirname, file)).pipe(split());
   let data = {
     labels: [],
-    series: []
+    series: [[],[]]
   };
   stream.on('data', (row) => {
     if (!row){
@@ -26,7 +26,9 @@ app.get('/api', (req, res, next) => {
     }
     let tuple = row.split(',');
     data.labels.push(parseInt(tuple[0]));
-    data.series.push(parseFloat(tuple[1]));
+    data.series[0].push(parseFloat(tuple[1]));
+    data.series[1].push(parseFloat(tuple[1])+1);
+
   })
 
   stream.on('end', () => {

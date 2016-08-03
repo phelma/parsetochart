@@ -9,7 +9,6 @@ function plot() {
   $.get('/api')
     .done(function(res){
       var data = res.data;
-      data.series = [data.series];
 
       let points = Math.floor(data.labels.length / 20);
 
