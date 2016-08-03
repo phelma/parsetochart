@@ -15,3 +15,7 @@ function plot() {
       console.error(err);
     });
 }
+
+$('.plot-btn').click(function() {
+  plot();
+});
