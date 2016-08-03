@@ -25,7 +25,7 @@ app.get('/api', (req, res, next) => {
       return;
     }
     let tuple = row.split(',');
-    data.labels.push(tuple[0]);
+    data.labels.push(parseInt(tuple[0]));
     data.series.push(parseFloat(tuple[1]));
   })
 

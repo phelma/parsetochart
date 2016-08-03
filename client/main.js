@@ -5,11 +5,12 @@ $(function(){
 })
 
 function plot() {
+  $('.ct-chart').empty();
   $.get('/api')
     .done(function(res){
       var data = res.data;
       data.series = [data.series];
-      new Chartist.Line('.ct-chart', data, options);
+      new Chartist.Line('.ct-chart', data);
     })
     .fail(function(err) {
       console.error(err);
@@ -17,5 +18,6 @@ function plot() {
 }
 
 $('.plot-btn').click(function() {
+
   plot();
 });
