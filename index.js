@@ -14,6 +14,7 @@ let app = express();
 app.use(express.static(path.join(__dirname, client)));
 
 app.get('/api', (req, res, next) => {
+  console.time('/api');
   let stream = fs.createReadStream(path.join(__dirname, file)).pipe(split());
   let data = {
     labels: [],
@@ -30,6 +31,7 @@ app.get('/api', (req, res, next) => {
 
   stream.on('end', () => {
     res.json({message: 'success', data: data});
+    console.timeEnd('/api');
   });
 
 });

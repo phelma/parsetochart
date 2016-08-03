@@ -7,9 +7,9 @@ $(function(){
 function plot() {
   $.get('/api')
     .done(function(res){
-      let data = res.data;
+      var data = res.data;
       data.series = [data.series];
-      new Chartist.Line('.ct-chart', data);
+      new Chartist.Line('.ct-chart', data, options);
     })
     .fail(function(err) {
       console.error(err);
